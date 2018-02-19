@@ -1,4 +1,4 @@
-FROM microsoft/windowsservercore:1709
+FROM microsoft/windowsservercore:1709_KB4074588
 ENV WINDOWS_IMAGE_VERSION=10.0.14393
 
 RUN mkdir C:\BuildAgent
