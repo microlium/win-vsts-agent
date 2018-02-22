@@ -1,5 +1,11 @@
 $ErrorActionPreference = "Stop"
 
+Start-Sleep -s 30
+
+$adapter=Get-NetAdapter
+Set-DnsClientServerAddress -InterfaceIndex $adapter.ifIndex -ServerAddresses $env:DNS1,$env:DNS2
+Set-DnsClient -InterfaceIndex $adapter.ifIndex -ConnectionSpecificSuffix "default.svc.cluster.local"
+
 If ($env:VSTS_ACCOUNT -eq $null) {
     Write-Error "Missing VSTS_ACCOUNT environment variable"
     exit 1
